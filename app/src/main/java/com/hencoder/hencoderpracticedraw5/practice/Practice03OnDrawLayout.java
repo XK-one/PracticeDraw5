@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.widget.LinearLayout;
 
 public class Practice03OnDrawLayout extends LinearLayout {
@@ -25,7 +26,9 @@ public class Practice03OnDrawLayout extends LinearLayout {
     }
 
     {
+        //ViewGroup 默认会绕过 draw() 方法，换而直接执行 dispatchDraw(),所以
         // 在这里插入 setWillNotDraw(false) 以启用完整的绘制流程
+        setWillNotDraw(false);
     }
 
     @Override
@@ -58,10 +61,15 @@ public class Practice03OnDrawLayout extends LinearLayout {
         }
 
         private void draw(Canvas canvas) {
-            int repitition = (int) Math.ceil((float) getWidth() / getHeight());
+            int repitition = (int) Math.ceil((float) getWidth() / getHeight()); //1
             for (int i = 0; i < spots.length * repitition; i++) {
                 Practice03OnDrawLayout.Pattern.Spot spot = spots[i % spots.length];
-                canvas.drawCircle(i / spots.length * getHeight() * PATTERN_RATIO + spot.relativeX * getHeight(), spot.relativeY * getHeight(), spot.relativeSize * getHeight(), patternPaint);
+
+                /*canvas.drawCircle(i / spots.length * getHeight() * PATTERN_RATIO + spot.relativeX * getHeight(),
+                        spot.relativeY * getHeight(), spot.relativeSize * getHeight(), patternPaint);*/
+
+                canvas.drawCircle(spot.relativeX * getHeight(),
+                        spot.relativeY * getHeight(), spot.relativeSize * getHeight(), patternPaint);
             }
         }
 

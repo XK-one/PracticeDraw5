@@ -59,13 +59,13 @@ public class Sample03OnDrawLayout extends LinearLayout {
         }
 
         private void draw(Canvas canvas) {
-            int repitition = (int) Math.ceil((float) getWidth() / getHeight());
+            int repitition = (int) Math.ceil((float) getWidth() / getHeight());  //宽高比例
             for (int i = 0; i < spots.length * repitition; i++) {
                 Sample03OnDrawLayout.Pattern.Spot spot = spots[i % spots.length];
                 canvas.drawCircle(i / spots.length * getHeight() * PATTERN_RATIO + spot.relativeX * getHeight(), spot.relativeY * getHeight(), spot.relativeSize * getHeight(), patternPaint);
             }
         }
-
+        //实体
         private class Spot {
             private float relativeX;
             private float relativeY;

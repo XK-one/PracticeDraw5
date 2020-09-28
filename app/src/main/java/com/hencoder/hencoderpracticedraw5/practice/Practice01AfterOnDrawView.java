@@ -3,6 +3,7 @@ package com.hencoder.hencoderpracticedraw5.practice;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
@@ -40,13 +41,14 @@ public class Practice01AfterOnDrawView extends AppCompatImageView {
         // 由于这期的重点是绘制代码的位置而不是绘制代码本身，所以直接给出绘制代码，你只要解除注释就好
         // 爽吧？
 
-        /*Drawable drawable = getDrawable();
+        Drawable drawable = getDrawable();
         if (drawable != null) {
             canvas.save();
-            canvas.concat(getImageMatrix());
+            canvas.concat(getImageMatrix());//concat是用 Canvas 当前的变换矩阵和 Matrix 相乘，即基于 Canvas 当前的变换，叠加上 Matrix 中的变换
+           //canvas.setMatrix(getImageMatrix());
             Rect bounds = drawable.getBounds();
             canvas.drawText(getResources().getString(R.string.image_size, bounds.width(), bounds.height()), 20, 40, paint);
             canvas.restore();
-        }*/
+        }
     }
 }

@@ -31,11 +31,15 @@ public class Practice07AfterDrawView extends AppCompatImageView {
     public void draw(Canvas canvas) {
         super.draw(canvas);
 
+        /**
+         *  下面的代码跟放在onDrawForeground函数的super.onDrawForeground(canvas) 之后的代码，效果是一致的
+         */
+
         // 在 super.draw() 的下方插入绘制代码，让绘制内容盖住其他所有
         // 由于这期的重点是绘制代码的位置而不是绘制代码本身，所以直接给出绘制代码，你只要解除注释就好
-        /*paint.setColor(Color.parseColor("#f44336"));
+        paint.setColor(Color.parseColor("#f44336"));
         canvas.drawRect(0, 40, 200, 120, paint);
         paint.setColor(Color.WHITE);
-        canvas.drawText("New", 20, 100, paint);*/
+        canvas.drawText("New", 20, 100, paint);
     }
 }
